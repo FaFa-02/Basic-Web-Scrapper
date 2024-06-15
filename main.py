@@ -10,8 +10,16 @@ driver = webdriver.Firefox(service=service)
 
 driver.get("https://quotes.toscrape.com/")
 
-# Open Login page
-author = driver.find_element(By.LINK_TEXT, "Login").click()
+# Open and find text fields in login page
+driver.find_element(By.LINK_TEXT, "Login").click()
+username_field = driver.find_element(By.ID, "username")
+password_field = driver.find_element(By.ID, "password")
+
+# Input account info and login
+username_field.send_keys("1234")
+password_field.send_keys("1234")
+driver.find_element(By.CLASS_NAME, "btn btn-primary").click()
+
 
 """
 browser_driver = Service()
