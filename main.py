@@ -20,25 +20,16 @@ username_field.send_keys("1234")
 password_field.send_keys("1234")
 driver.find_element(By.CSS_SELECTOR, "input.btn-primary").click()
 
-
-"""
-browser_driver = Service()
-
-# Requests web page and parses into soup
-target_page = requests.get("https://quotes.toscrape.com/")   
-soup = BeautifulSoup(target_page.text, "html.parser")
-
 # Find all quotes and authors in the html
-quotes = soup.find_all("span", attrs={"class":"text"})
-authors = soup.find_all("small", attrs={"class":"author"})
+quotes = driver.find_elements(By.CLASS_NAME, "text")
+authors = driver.find_elements(By.CLASS_NAME, "author")
 
 # Store all quotes and authors in a list
 quote_arr = []
 author_arr = []
 for quote, author in zip(quotes, authors):
-    quote_arr.append(quote.string)
-    author_arr.append(author.string)
+    quote_arr.append(quote.text)
+    author_arr.append(author.text)
 
 print(quote_arr)
 print(author_arr)
-"""
