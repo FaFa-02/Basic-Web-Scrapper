@@ -1,5 +1,20 @@
-from bs4 import BeautifulSoup
-import requests
+#from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.common.by import By
+
+PATH = "C:\Program Files (x86)\geckodriver.exe"
+
+service = webdriver.FirefoxService()
+driver = webdriver.Firefox(service=service)
+
+driver.get("https://quotes.toscrape.com/")
+
+# Open Login page
+author = driver.find_element(By.LINK_TEXT, "Login").click()
+
+"""
+browser_driver = Service()
 
 # Requests web page and parses into soup
 target_page = requests.get("https://quotes.toscrape.com/")   
@@ -18,3 +33,4 @@ for quote, author in zip(quotes, authors):
 
 print(quote_arr)
 print(author_arr)
+"""
