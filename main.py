@@ -9,12 +9,12 @@ soup = BeautifulSoup(target_page.text, "html.parser")
 quotes = soup.find_all("span", attrs={"class":"text"})
 authors = soup.find_all("small", attrs={"class":"author"})
 
-# Store all quotes in a list
+# Store all quotes and authors in a list
 quote_arr = []
-for quote in quotes:
-    quote_arr.append(quote.string)
-
-# Store all authors in a list
 author_arr = []
-for author in authors:
+for quote, author in zip(quotes, authors):
+    quote_arr.append(quote.string)
     author_arr.append(author.string)
+
+print(quote_arr)
+print(author_arr)
