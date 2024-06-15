@@ -18,7 +18,7 @@ password_field = driver.find_element(By.ID, "password")
 # Input account info and login
 username_field.send_keys("1234")
 password_field.send_keys("1234")
-driver.find_element(By.CLASS_NAME, "btn btn-primary").click()
+driver.find_element(By.CSS_SELECTOR, "input.btn-primary").click()
 
 
 """
